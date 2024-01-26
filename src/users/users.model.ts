@@ -5,9 +5,13 @@ import {
   DataType,
   Table,
   BelongsToMany,
+  HasMany,
 } from 'sequelize-typescript';
+import { Company } from 'src/company/company.model';
+import { Post } from 'src/posts/posts.model';
 import { Role } from 'src/roles/roles.model';
 import { UserRoles } from 'src/roles/user-roles.model';
+import { Vacancy } from 'src/vacancies/vacancies.model';
 
 interface UserCreationAttrs {
   email: string;
@@ -33,6 +37,9 @@ export class User extends Model<User, UserCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
 
+  @Column({type: DataType.STRING, allowNull: false})
+  whoUser: string;
+
   @ApiProperty({ example: 'true', description: 'Забанен или нет' })
   @Column({ type: DataType.BOOLEAN, defaultValue: false })
   banned: boolean;
@@ -46,4 +53,13 @@ export class User extends Model<User, UserCreationAttrs> {
 
   @BelongsToMany(() => Role, () => UserRoles)
   roles: Role[];
+
+  @HasMany(() => Post)
+  posts: Post[];
+
+  @HasMany(() => Vacancy)
+  vacancies: Post[];
+
+  @HasMany(() => Company)
+  company: Company[];
 }

@@ -7,10 +7,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Project Todo App')
+    .setTitle('Project Vacancy App')
     .setDescription('Documentation Rest Api')
     .setVersion('1.0.0')
     .addTag('Ismoiljon Abdulloev')
+    .addBearerAuth()
+    .setContact('Ismoiljon Abdulloev','api','ismoiljon.abdulloev.ibt@gmail.com')
     .build();
 
   const docement = SwaggerModule.createDocument(app, config);
