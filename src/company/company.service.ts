@@ -37,7 +37,7 @@ export class CompanyService {
     const company = await this.companyRepository.update(updateCompanyDto, { where: { id: id } });
     return company;
   }
-
+// test
   async remove(id: number) {
     const company = await this.companyRepository.destroy({ where: { id: id } });
     return company;

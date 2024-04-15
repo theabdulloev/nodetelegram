@@ -15,6 +15,7 @@ import * as path from 'path';
 import { Company } from './company/company.model';
 import { Vacancy } from './vacancies/vacancies.model';
 import { VacanciesModule } from './vacancies/vacancies.module';
+import { TelegramService } from './telegram/telegram.service';
 
 @Module({
   imports: [
@@ -40,6 +41,6 @@ import { VacanciesModule } from './vacancies/vacancies.module';
     VacanciesModule
   ],
   controllers: [],
-  providers: [],
+  providers: [TelegramService],
 })
 export class AppModule {}
